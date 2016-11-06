@@ -1,0 +1,39 @@
+{
+    "type": "metaEvent",
+    "event": "beforeGame",
+    "effects": [
+        {
+            "type": "metaEffect",
+            "effect": "setCardListRequirements",
+            "forAllPlayers": true,
+            "requirements": [
+                {
+                    "type": "cardListRequirement",
+                    "requirement": "maxSize",
+                    "size": 40
+                },
+                {
+                    "type": "cardListRequirement",
+                    "requirement": "minSize",
+                    "size": 40
+                },
+                {
+                    "type": "cardListRequirement",
+                    "requirement": "maxCountOfCards", //maxCountFromGroups for "only one from group:"
+                    "count": 2,
+                    "cardList": {
+                        "type": "cardList",
+                        "list": "allCards",
+                        "filters": [
+                            {
+                                "type": "cardFilter",
+                                "filter": "notMatching",
+                                "rarity": "legendary"
+                            }
+                        ]
+                    }
+                }
+            ]
+        }
+    ]
+}

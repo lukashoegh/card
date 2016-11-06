@@ -1,0 +1,5 @@
+coverage:
+istanbul cover node_modules/mocha/bin/_mocha
+
+tests:
+mocha --recursive -w

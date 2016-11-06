@@ -1,0 +1,71 @@
+{
+    "module": "mulliganPhase",
+    "type": "compositeEffect",
+    "requireParameters": [
+        {
+            "type": "numberParameter",
+            "name": "mulliganTime"
+        },
+        {
+            "type": "numberParameter",
+            "name": "handSize"
+        },
+        {
+            "type": "numberParameter",
+            "name": "maxMulliganCount"
+        }
+    ],
+    "effects": [
+        {
+            "type": "gameEffect",
+            "effect": "stopGameTimer",
+            "onTimeout": "force",
+            "duration": "parameter.mulliganTime"
+        },
+        {
+            "type": "playerEffect",
+            "effect": "cardSelector",
+            "forAllPlayers": true,
+            "generator": "deck",
+            "quantity": "parameter.handSize",
+            "pickMin": 0,
+            "pickMax": "parameter.maxMulliganCount",
+            "pickType": "deselect"
+        },
+        {
+            "type": "gameEffect",
+            "effect": "syncronizePlayers"
+        },
+        {
+            "type": "playerEffect",
+            "effect": "addCardsToHand",
+            "forAllPlayers": true,
+            "generator": "selected",
+            "quantity": "selectedCount"
+        },
+        {
+            "type": "playerEffect",
+            "effect": "drawCards",
+            "forAllPlayers": true,
+            "quantity": "deselectedCount"
+        },
+        {
+            "type": "playerEffect",
+            "effect": "addCardsToDeck",
+            "forAllPlayers": true,
+            "generator": "deselected",
+            "quantity": "deselectedCount",
+            "deckPosition": "random"
+        },
+        {
+            "type": "gameEffect",
+            "effect": "startGameTimer"
+        },
+        {
+            "type": "gameEffect",
+            "effect": "triggerCustomEvent",
+            "triggerEventType": "gameEvent",
+            "triggerEventName": "mulliganDone"
+        }
+    ]
+}

@@ -1,0 +1,64 @@
+{
+    "module": "gameRules",
+    "type": "compositeEvent",
+    "events": [
+        {
+            "type": "gameEvent",
+            "event": "beforeDeckLoad",
+            "effects": [
+                {
+                    "type": "playerEffect",
+                    "effect": "setConstants",
+                    "forAllePlayers": true,
+                    "maxHandsize": 10
+                }
+            ]
+        },
+        {
+            "type": "gameEvent",
+            "event": "afterDeckLoad",
+            "effects": [
+                {
+                    "type": "loadEffect",
+                    "loadModule": "initializeHitpoints",
+                    "sendParameters": [50, 50],
+                    "forAllPlayers": true
+                },
+                {
+                    "type": "loadEffect",
+                    "loadModule": "initializeEnergyGeneration",
+                    "sendParameters": [4, 2, 0],
+                    "forAllPlayers": true
+                },
+                {
+                    "type": "loadEffect",
+                    "loadModule": "initializeUsables",
+                    "forAllPlayers": true
+                },
+                {
+                    "type": "loadEffect",
+                    "loadModule": "mulliganPhase",
+                    "sendParameters": [45, 5, 5]
+                }
+            ]
+        },
+        {
+            "type": "gameEvent",
+            "event": "mulliganDone",
+            "effect": {
+                
+            }
+        },
+        {
+            "type": "playerEvent",
+            "event": "numberLessThan",
+            "loadName": "hitpoints",
+            "lessThan": 0,
+            "forAllPlayers": true,
+            "effect": {
+                "type": "playerEffect",
+                "effect": "playerLose"
+            }
+        }
+    ]
+}

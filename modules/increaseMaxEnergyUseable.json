@@ -1,0 +1,20 @@
+{
+    "module": "increaseMaxEnergyUseable",
+    "type": "playerEffect",
+    "effect": "registerUsable",
+    "requireParameter": {
+        "type": "numberParameter",
+        "name": "cost"
+    },
+    "cost": {
+        "type": "resourceCost",
+        "resource": "energy",
+        "quantity": "parameters.cost"
+    },
+    "triggeredEffect": {
+        "type": "playerEffect",
+        "effect": "increaseNumber",
+        "loadName": "maxEnergy",
+        "quantity": 1
+    }
+}

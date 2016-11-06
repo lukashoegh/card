@@ -1,0 +1,58 @@
+{
+    "module": "initializeEnergyGeneration",
+    "type": "compositeEffect",
+    "requireParameters": [
+        {
+            "type": "numberParameter",
+            "name": "energyGenerationInterval"
+        },
+        {
+            "type": "numberParameter",
+            "name": "initialMaxEnergy"
+        },
+        {
+            "type": "numberParameter",
+            "name": "initialEnergy"
+        }
+    ],
+    "effects": [
+        {
+            "type": "playerEffect",
+            "effect": "registerNumber",
+            "registerName": "energyGenerationInterval",
+            "value": "parameters.energyGenerationInterval"
+        },
+        {
+            "type": "playerEffect",
+            "effect": "registerNumber",
+            "registerName": "maxEnergy",
+            "value": "parameters.initialMaxEnergy"
+        },
+        {
+            "type": "playerEffect",
+            "effect": "registerResource",
+            "registerName": "energy",
+            "min": 0,
+            "max": {
+                "type": "loadNumber",
+                "loadName": "maxEnergy"
+            },
+            "initial": "parameters.initialEnergy"
+        },
+        {
+            "type": "playerEffect",
+            "effect": "registerInterval",
+            "registerName": "energyGeneration",
+            "interval": {
+                "type": "loadNumber",
+                "loadName": "energyGenerationInterval"
+            },
+            "triggeredEffect": {
+                "type": "playerEffect",
+                "effect": "generateResource",
+                "resource": "energy",
+                "quantity": 1
+            }
+        }
+    ]
+}

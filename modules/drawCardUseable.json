@@ -1,0 +1,36 @@
+{
+    "module": "drawCardUseable",
+    "type": "playerEffect",
+    "effect": "registerUsable",
+    "requireParameters": [
+        {
+            "type": "numberParameter",
+            "name": "cost"
+        },
+        {
+            "type": "numberParameter",
+            "name": "cooldown"
+        },
+        {
+            "type": "numberParameter",
+            "name": "initialCooldown"
+        },
+        {
+            "type": "booleanParameter",
+            "name": "autoUse"
+        }
+    ],
+    "cost": {
+        "type": "resourceCost",
+        "resource": "energy",
+        "quantity": "parameters.cost"
+    },
+    "triggeredEffect": {
+        "type": "playerEffect",
+        "effect": "drawCards",
+        "quantity": 1
+    },
+    "cooldown": "parameters.cooldown",
+    "initialCooldown": "parameters.initialCooldown",
+    "autoUse": "parameters.autoUse"
+}

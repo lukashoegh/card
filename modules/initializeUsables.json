@@ -1,0 +1,41 @@
+{
+    "module": "initializeUsables",
+    "type": "compositeEffect",
+    "effects": [
+        {
+            "type": "loadEffect",
+            "loadModule": "increaseMaxEnergyUseable",
+            "sendParameter": 2
+        },
+        {
+            "type": "loadEffect",
+            "loadModule": "increaseEnergyGenerationUseable",
+            "sendParameters": [4, 3, 1]
+        },
+        {
+            "type": "loadEffect",
+            "loadModule": "increaseEnergyGenerationUseable",
+            "sendParameters": [7, 3, 1]
+        },
+        {
+            "type": "loadEffect",
+            "loadModule": "increaseEnergyGenerationUseable",
+            "sendParameters": [10, 3, 1]
+        },
+        {
+            "type": "loadEffect",
+            "loadModule": "drawCardUseable",
+            "sendParameters": [0, 30, 20, true]
+        },
+        {
+            "type": "loadEffect",
+            "loadModule": "drawCardUseable",
+            "sendParameters": [2, 30, 20, false]
+        },
+        {
+            "type": "loadEffect",
+            "loadModule": "drawCardUseable",
+            "sendParameters": [4, 30, 20, false]
+        }
+    ]
+}

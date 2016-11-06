@@ -1,0 +1,23 @@
+{
+    "module": "initializeHitpoints",
+    "type": "compositeEffect",
+    "requireParameters": [
+        {
+            "type": "numberParameter",
+            "name": "startHitpoints"
+        },
+        {
+            "type": "numberParameter",
+            "name": "maxHitpoints"
+        }
+    ],
+    "effects": [
+        {
+            "type": "playerEffect",
+            "effect": "registerNumber",
+            "registerName": "hitpoints",
+            "value": "parameters.startHitpoints",
+            "max": "parameters.maxHitpoints"
+        }
+    ]
+}

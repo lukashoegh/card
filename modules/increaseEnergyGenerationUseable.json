@@ -1,0 +1,35 @@
+{
+    "module": "increaseEnergyGenerationUseable",
+    "type": "playerEffect",
+    "effect": "registerUsable",
+    "requireParameters": [
+        {
+            "type": "numberParameter",
+            "name": "maxEnergyRequirement"
+        },
+        {
+            "type": "numberParameter",
+            "name": "energyCost"
+        },
+        {
+            "type": "numberParameter",
+            "name": "intervalDecrease"
+        }
+    ],
+    "oneTime": true,
+    "requirement": {
+        "type": "numberGreaterThan",
+        "loadName": "maxEnergy",
+        "value": "parameters.maxEnergyRequirement"
+    },
+    "cost": {
+        "type": "resourceCost",
+        "resource": "energy",
+        "quantity": "parameters.energyCost"
+    },
+    "triggeredEffect": {
+        "type": "decreaseNumber",
+        "loadName": "energyGenerationInterval",
+        "quantity": "parameters.intervalDecrease"
+    }
+}

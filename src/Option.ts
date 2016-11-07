@@ -15,6 +15,6 @@ export default class Option<T> {
 
     public getValue(): T {
         if (this.valueIsPresent) return this.value;
-        else throw new ReferenceError("Tried to access unpresent value in option");
+        else throw new ReferenceError("Tried to access value of empty option");
     }
 }

@@ -15,11 +15,11 @@ describe("Player", function () {
     });
 
     it("When a player is constructed they have no cards in their deck", function () {
-        player.getDeckList().length.should.equal(0);
+        player.getCardList().length.should.equal(0);
     })
 
 	it("When you add a card to the decklist, the size of the deck increases by one", function () {
 		player.addCard(new Card())
-		player.getDeckList().length.should.equal(1);
+		player.getCardList().length.should.equal(1);
 	})
 })

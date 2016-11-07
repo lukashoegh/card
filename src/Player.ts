@@ -1,17 +1,17 @@
 import Card from "./Card";
 
 export default class Player {
-    private deckList: Card[];
+    private cardList: Card[];
 
     public constructor() {
-        this.deckList = [];
+        this.cardList = [];
     }
 
     public addCard(card: Card): void {
-        this.deckList.push(card);
+        this.cardList.push(card);
     }
 
-    public getDeckList(): Card[] {
-        return this.deckList;
+    public getCardList(): Card[] {
+        return this.cardList;
     }
 }

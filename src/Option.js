@@ -14,7 +14,7 @@ var Option = (function () {
         if (this.valueIsPresent)
             return this.value;
         else
-            throw new ReferenceError("Tried to access unpresent value in option");
+            throw new ReferenceError("Tried to access value of empty option");
     };
     return Option;
 }());

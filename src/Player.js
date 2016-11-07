@@ -1,13 +1,13 @@
 "use strict";
 var Player = (function () {
     function Player() {
-        this.deckList = [];
+        this.cardList = [];
     }
     Player.prototype.addCard = function (card) {
-        this.deckList.push(card);
+        this.cardList.push(card);
     };
-    Player.prototype.getDeckList = function () {
-        return this.deckList;
+    Player.prototype.getCardList = function () {
+        return this.cardList;
     };
     return Player;
 }());

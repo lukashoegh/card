@@ -1,33 +1,87 @@
 {
     "module": "gameRules",
-    "type": "compositeEvent",
+    "type": "gameRules",
+    "constants": [
+        {
+            "type": "gameConstant",
+            "constant": "playerCount",
+            "value": 2
+        },
+        {
+            "type": "playerConstant",
+            "constant": "maxHandSize",
+            "value": 10,
+            "forAllPlayers": true
+        }
+    ],
+    "cardListRequirements": [
+        {
+            "type": "cardListRequirement",
+            "requirement": "maxSize",
+            "size": 40,
+            "forAllPlayers": true
+        },
+        {
+            "type": "cardListRequirement",
+            "requirement": "minSize",
+            "size": 40,
+            "forAllPlayers": true
+        },
+        {
+            "type": "cardListRequirement",
+            "requirement": "maxCountOfCards", //maxCountFromGroups for "only one from group:"
+            "count": 2,
+            "forAllPlayers": true,
+            "cardListGeneratorsAndFilters": [ 
+                {
+                    "type": "cardListGenerator",
+                    "generator": "allCards"
+                },
+                {
+                    "type": "cardListFilter",
+                    "filter": "notMatchingPattern",
+                    "pattern": {
+                        "rarity": "legendary"
+                    }
+                }
+            ]
+        }
+    ],
     "events": [
         {
             "type": "gameEvent",
             "event": "beforeDeckLoad",
-            "effects": [
-                {
-                    "type": "playerEffect",
-                    "effect": "setConstants",
-                    "forAllePlayers": true,
-                    "maxHandsize": 10
-                }
-            ]
+            "effects": []
         },
         {
             "type": "gameEvent",
             "event": "afterDeckLoad",
             "effects": [
                 {
+                    "type": "playerEffect",
+                    "effect": "addCardsToDeck"
+                }
+                {
+                    "type": "playerEffect",
+                    "effect": "shuffleDeck"
+                },
+                {
                     "type": "loadEffect",
                     "loadModule": "initializeHitpoints",
-                    "sendParameters": [50, 50],
+                    "sendParameters": [
+                        50,
+                        50
+                    ],
                     "forAllPlayers": true
                 },
                 {
                     "type": "loadEffect",
                     "loadModule": "initializeEnergyGeneration",
-                    "sendParameters": [4, 2, 0],
+                    "sendParameters": [
+                        4,
+                        2,
+                        0
+                    ],
                     "forAllPlayers": true
                 },
                 {
@@ -38,16 +92,18 @@
                 {
                     "type": "loadEffect",
                     "loadModule": "mulliganPhase",
-                    "sendParameters": [45, 5, 5]
+                    "sendParameters": [
+                        45,
+                        5,
+                        5
+                    ]
                 }
             ]
         },
         {
             "type": "gameEvent",
             "event": "mulliganDone",
-            "effect": {
-                
-            }
+            "effect": {}
         },
         {
             "type": "playerEvent",
